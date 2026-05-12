@@ -14,4 +14,4 @@
 | Pagos | PENDIENTE | Existe modelo `Payment` y variable `PAYMENT_PROVIDER="mock"`. | Medio | Definir proveedor e implementar. |
 | IA | PENDIENTE | Existe modelo `AiRequestLog` y variable `OPENAI_API_KEY`. | Medio | Definir prompts e integrar. |
 | CI/CD (Vercel/Railway) | OK | `vercel.json` configurado con la URL real de Railway. Guía de setup frontend creada. | Bajo | Listo para despliegue manual en Vercel. |
-| Configuración Frontend | OK | Variable `VITE_API_BASE_URL` identificada. Build local exitoso. | Bajo | - |
+| Configuración Frontend | OK | Script `build:frontend` agregado para compatibilidad con Vercel. Build local OK. | Bajo | - |

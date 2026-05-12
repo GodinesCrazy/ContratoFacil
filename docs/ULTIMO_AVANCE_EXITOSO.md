@@ -14,6 +14,7 @@
 9. Configuración de `vercel.json` actualizada con la URL real de Railway.
 10. Variable de entorno frontend `VITE_API_BASE_URL` validada y documentada.
 11. Guía de despliegue `docs/VERCEL_FRONTEND_SETUP.md` y Checklist creados.
+12. Script `build:frontend` agregado a `frontend/package.json` para resolver error de compilación en Vercel.
 
 ## ¿Qué falta o está fallando (Estado actual)?
 1. **Despliegue Frontend:** El frontend está preparado pero requiere despliegue manual en la consola de Vercel por parte de Iván.
