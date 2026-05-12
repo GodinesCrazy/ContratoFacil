@@ -1,0 +1,328 @@
+PROMPT MAESTRO PARA GEMINI EN VS CODE — AUDITORÍA Y DOCUMENTACIÓN CONTRATOFÁCIL
+
+Contexto:
+Estoy trabajando en Windows con un proyecto SaaS llamado ContratoFácil ubicado en:
+
+C:\ContratoFacil
+
+Repositorio GitHub objetivo:
+
+https://github.com/GodinesCrazy/ContratoFacil.git
+
+ContratoFácil es un SaaS chileno para generar contratos y documentos legales frecuentes, comenzando por contratos de arriendo habitacional. El producto debe permitir crear documentos mediante formularios guiados, generar PDF profesional, guardar historial, usar pagos online y preparar integración futura con firma electrónica e IA asistida. No debe presentarse como “abogado online”, sino como asistente documental con plantillas y advertencias legales claras.
+
+OBJETIVO PRINCIPAL:
+Realizar una auditoría profunda del estado actual del proyecto local y generar documentación completa para que cualquier IA, programador o agente futuro pueda continuar el desarrollo desde el último avance exitoso, sin perder contexto, sin inventar información y sin romper lo existente.
+
+REGLA CRÍTICA:
+NO inventes estados, archivos, endpoints, scripts, resultados de build, variables de entorno, integraciones ni funcionalidades.
+Todo lo que afirmes debe clasificarse como:
+- VERIFICADO: existe en el proyecto o fue probado con comando.
+- PENDIENTE: no existe, falta configurar o no se pudo comprobar.
+- DEFINIDO POR PRODUCTO: forma parte del alcance definido, pero aún no necesariamente implementado.
+- REQUIERE DECISIÓN DEL DUEÑO: falta definición de Iván.
+
+ALCANCE DE ESTA PASADA:
+1. Auditar el proyecto.
+2. Crear documentación .md.
+3. Crear scripts seguros si faltan.
+4. NO refactorizar backend/frontend.
+5. NO borrar archivos.
+6. NO cambiar nombres de carpetas, clases, endpoints, paquetes ni estructura sin autorización.
+7. Si detectas errores de compilación, documenta causa y plan de corrección. No hagas cambios invasivos sin aprobación.
+8. Puedes crear archivos dentro de /docs y /scripts.
+9. Puedes crear o actualizar setup-contratofacil.bat solo si es necesario y de forma no destructiva.
+
+PASO 1 — INSPECCIÓN INICIAL
+Desde VS Code, inspecciona:
+
+C:\ContratoFacil
+
+Debes revisar:
+- Árbol de carpetas.
+- package.json raíz.
+- backend/package.json.
+- frontend/package.json.
+- backend/prisma/schema.prisma.
+- backend/.env.example.
+- frontend/.env.example.
+- vercel.json.
+- backend/railway.json si existe.
+- backend/Dockerfile si existe.
+- README.md.
+- docs existentes.
+- .github/workflows existentes.
+- scripts .bat o .ps1 existentes.
+
+No incluyas node_modules, .git, dist, build, coverage ni archivos temporales en el árbol documental.
+
+PASO 2 — COMANDOS DE AUDITORÍA
+Ejecuta y registra resultado:
+
+cd C:\ContratoFacil
+node -v
+npm -v
+git status
+git remote -v
+git branch --show-current
+
+Luego ejecuta:
+
+npm install
+npm run prisma:generate
+npm run build
+
+Si existen scripts adicionales en package.json, evalúa si corresponde ejecutar:
+npm run lint
+npm test
+npm run typecheck
+
+Solo ejecútalos si existen. Si no existen, márcalos como PENDIENTE.
+
+PASO 3 — ARCHIVOS QUE DEBES CREAR O ACTUALIZAR
+
+Crea o actualiza estos archivos:
+
+1. docs/CONTRATOFACIL_HANDOFF_MASTER.md
+Debe ser el documento maestro completo del proyecto.
+
+2. docs/AUDITORIA_ESTADO_ACTUAL.md
+Debe contener auditoría técnica real basada en archivos y comandos.
+
+3. docs/ULTIMO_AVANCE_EXITOSO.md
+Debe indicar exactamente qué fue lo último que quedó validado correctamente y qué falta.
+
+4. docs/REGLAS_OBLIGATORIAS_DESARROLLO.md
+Debe contener reglas estrictas para cualquier IA o programador futuro.
+
+5. docs/SCRIPTS_Y_COMANDOS.md
+Debe listar todos los scripts npm, bat, ps1, comandos de instalación, build, Prisma, Git, Railway y Vercel.
+
+6. docs/VARIABLES_ENTORNO.md
+Debe documentar todas las variables encontradas en .env.example y marcar las faltantes.
+
+7. docs/ROADMAP_TECNICO.md
+Debe contener fases detalladas del desarrollo desde MVP hasta producción.
+
+8. docs/DECISIONES_PENDIENTES.md
+Debe listar todo lo que requiere decisión de Iván.
+
+9. GEMINI_SETUP_REVIEW.md
+Resumen ejecutivo de lo realizado para que pueda subirlo a ChatGPT y pedir revisión.
+
+Opcional:
+10. scripts/audit-contratofacil.bat
+Script no destructivo que ejecute validaciones básicas:
+- node -v
+- npm -v
+- git status
+- git remote -v
+- npm run prisma:generate
+- npm run build
+Debe dejar pausa al final.
+No debe borrar nada.
+
+PASO 4 — CONTENIDO MÍNIMO DE docs/CONTRATOFACIL_HANDOFF_MASTER.md
+
+El documento maestro debe incluir al menos:
+
+# ContratoFácil — Documento Maestro de Continuidad
+
+## 1. Identidad del proyecto
+- Nombre: ContratoFácil
+- Ruta local: C:\ContratoFacil
+- Repositorio: https://github.com/GodinesCrazy/ContratoFacil.git
+- Mercado inicial: Chile
+- Vertical inicial: contratos de arriendo
+- Cliente inicial: propietarios, corredores independientes, pequeñas inmobiliarias y usuarios que necesitan contratos rápidos
+- Tipo de producto: SaaS documental legal, no estudio jurídico
+
+## 2. Concepto del producto
+Explicar que ContratoFácil permite crear contratos mediante formularios guiados, generar PDF, guardar historial, pagar por descarga o plan, y en fases futuras integrar firma electrónica, IA y gestión de arriendos.
+
+## 3. Advertencia legal obligatoria
+Debe quedar claro:
+ContratoFácil entrega plantillas y asistencia documental. No reemplaza asesoría legal profesional. Para casos complejos o disputas, se recomienda consultar a un abogado.
+
+## 4. Problema que resuelve
+- Modelos de internet poco confiables.
+- Errores editando Word.
+- Falta de historial.
+- PDF poco profesional.
+- Falta de control de vencimientos.
+- Falta de trazabilidad.
+
+## 5. MVP definido
+Primera versión:
+- Landing.
+- Registro/login.
+- Dashboard.
+- Crear contrato de arriendo habitacional.
+- Vista previa.
+- PDF con marca de agua.
+- Pago simulado o real según avance.
+- PDF limpio.
+- Historial documental.
+
+## 6. Documentos iniciales
+Fase inicial:
+- Contrato de arriendo habitacional.
+- Acta de entrega de inmueble.
+- Inventario de inmueble.
+- Anexo de modificación de contrato.
+- Carta de aviso de término de arriendo.
+
+Marcar cuáles están implementados y cuáles pendientes según auditoría.
+
+## 7. Stack técnico
+Documentar lo real encontrado:
+- Frontend.
+- Backend.
+- Base de datos.
+- ORM.
+- PDF.
+- Auth.
+- Pagos.
+- IA.
+- Deploy.
+
+No inventar. Si algo no está implementado, marcar PENDIENTE.
+
+## 8. Arquitectura del repositorio
+Incluir árbol resumido real.
+
+## 9. Backend
+Documentar:
+- Framework.
+- Entry points.
+- Rutas.
+- Middlewares.
+- Módulos.
+- Servicios.
+- Prisma.
+- Healthcheck.
+- Variables.
+- Scripts.
+
+## 10. Frontend
+Documentar:
+- Framework.
+- Rutas.
+- Páginas.
+- Componentes.
+- Servicios API.
+- Variables.
+- Scripts.
+
+## 11. Base de datos
+Documentar modelos reales de schema.prisma.
+Si existen modelos:
+- User.
+- DocumentTemplate.
+- Document.
+- Clause.
+- Payment.
+- Reminder.
+etc.
+Si no existen, marcar pendiente.
+
+## 12. PDF
+Explicar cómo está implementado.
+Si usa PDFKit, HTML/CSS, Puppeteer u otra librería, documentarlo según archivos reales.
+
+## 13. Pagos
+Documentar si hay integración real, simulación o solo arquitectura preparada.
+
+## 14. IA
+Documentar si hay integración real o solo módulo preparado.
+Regla: IA controlada, no asesoría legal definitiva.
+
+## 15. Deploy
+Documentar:
+- Vercel.
+- Railway.
+- Variables requeridas.
+- vercel.json.
+- railway.json.
+- GitHub Actions.
+- Healthcheck.
+
+## 16. Scripts
+Listar comandos exactos:
+- npm install.
+- npm run dev:backend.
+- npm run dev:frontend.
+- npm run prisma:generate.
+- npm run build.
+- git add/commit/push.
+- scripts bat/ps1 existentes.
+
+## 17. Último avance exitoso
+Incluir:
+- Fecha/hora de auditoría.
+- Comando ejecutado.
+- Resultado.
+- Qué quedó funcionando.
+- Qué no se validó.
+
+## 18. Reglas obligatorias para futuras IA/programadores
+Incluir:
+- No inventar.
+- No modificar código funcionando sin necesidad.
+- No romper estructura.
+- No cambiar remoto GitHub.
+- No tocar .env reales.
+- No eliminar carpetas.
+- No mezclar ContratoFácil con Ivan Reseller u otros proyectos.
+- Documentar cada cambio.
+- Antes de corregir, explicar causa raíz.
+- Si hay duda, preguntar.
+
+## 19. Roadmap
+Fase 1 MVP.
+Fase 2 Pack Arriendo Seguro.
+Fase 3 SaaS mensual.
+Fase 4 Firma electrónica.
+Fase 5 Integración con gestión de arriendos.
+
+## 20. Pendientes de decisión
+Todo lo que falte definir por Iván.
+
+PASO 5 — FORMATO DE AUDITORÍA
+
+En docs/AUDITORIA_ESTADO_ACTUAL.md usa tablas:
+
+| Área | Estado | Evidencia | Riesgo | Acción recomendada |
+|---|---|---|---|---|
+
+Estados permitidos:
+- OK
+- ADVERTENCIA
+- ERROR
+- PENDIENTE
+- NO VERIFICADO
+
+PASO 6 — SALIDA FINAL QUE DEBES MOSTRAR EN VS
+
+Al terminar, responde con:
+
+1. Archivos creados/modificados.
+2. Comandos ejecutados.
+3. Resultado de npm install.
+4. Resultado de prisma:generate.
+5. Resultado de build.
+6. Estado Git remoto.
+7. Último avance exitoso comprobado.
+8. Errores encontrados.
+9. Acciones manuales pendientes.
+10. Indicación de que debo subir a ChatGPT los archivos:
+   - GEMINI_SETUP_REVIEW.md
+   - docs/CONTRATOFACIL_HANDOFF_MASTER.md
+   - docs/AUDITORIA_ESTADO_ACTUAL.md
+
+IMPORTANTE:
+Si no puedes ejecutar un comando, dilo claramente.
+Si un archivo no existe, dilo claramente.
+Si una integración aún no está implementada, márcala como PENDIENTE.
+No completes con suposiciones.
+No afirmes que Railway, Vercel, pagos, PDF, auth o IA funcionan si no lo verificaste.

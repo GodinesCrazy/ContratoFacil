@@ -1,0 +1,14 @@
+﻿GET http://localhost:8080/health
+
+###
+GET http://localhost:8080/ready
+
+###
+POST http://localhost:8080/api/auth/register
+Content-Type: application/json
+
+{
+  "name": "Usuario Demo",
+  "email": "demo@contratofacil.cl",
+  "password": "contratofacil123"
+}

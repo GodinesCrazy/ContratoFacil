@@ -1,0 +1,160 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  USER
+  ADMIN
+  LAWYER
+}
+
+enum UserPlan {
+  FREE
+  BASIC
+  PROFESSIONAL
+  PYME
+}
+
+enum DocumentStatus {
+  DRAFT
+  PREVIEW
+  PAID
+  GENERATED
+  ARCHIVED
+}
+
+enum PaymentStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  REFUNDED
+}
+
+enum ReminderStatus {
+  PENDING
+  SENT
+  CANCELLED
+}
+
+model User {
+  id           String         @id @default(cuid())
+  name         String
+  email        String         @unique
+  passwordHash String
+  role         UserRole       @default(USER)
+  plan         UserPlan       @default(FREE)
+  documents    Document[]
+  payments     Payment[]
+  reminders    Reminder[]
+  aiRequests   AiRequestLog[]
+  emailLogs    EmailLog[]
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+}
+
+model DocumentTemplate {
+  id           String     @id @default(cuid())
+  name         String
+  slug         String     @unique
+  category     String
+  version      Int        @default(1)
+  schemaJson   Json
+  htmlTemplate String
+  isActive     Boolean    @default(true)
+  documents    Document[]
+  clauses      Clause[]
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+}
+
+model Document {
+  id           String            @id @default(cuid())
+  userId       String
+  templateId   String
+  title        String
+  status       DocumentStatus    @default(DRAFT)
+  dataJson     Json
+  htmlSnapshot String?
+  pdfUrl       String?
+  watermark    Boolean           @default(true)
+  paidAt       DateTime?
+  user         User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  template     DocumentTemplate  @relation(fields: [templateId], references: [id])
+  payments     Payment[]
+  reminders    Reminder[]
+  emailLogs    EmailLog[]
+  createdAt    DateTime          @default(now())
+  updatedAt    DateTime          @updatedAt
+}
+
+model Clause {
+  id            String            @id @default(cuid())
+  templateId    String
+  key           String
+  title         String
+  body          String
+  conditionJson Json?
+  isOptional    Boolean           @default(false)
+  template      DocumentTemplate  @relation(fields: [templateId], references: [id], onDelete: Cascade)
+  createdAt     DateTime          @default(now())
+  updatedAt     DateTime          @updatedAt
+
+  @@unique([templateId, key])
+}
+
+model Payment {
+  id                String         @id @default(cuid())
+  userId            String
+  documentId        String?
+  provider          String
+  amount            Int
+  currency          String         @default("CLP")
+  status            PaymentStatus  @default(PENDING)
+  providerPaymentId String?
+  user              User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  document          Document?      @relation(fields: [documentId], references: [id], onDelete: SetNull)
+  createdAt         DateTime       @default(now())
+  updatedAt         DateTime       @updatedAt
+}
+
+model Reminder {
+  id         String          @id @default(cuid())
+  userId     String
+  documentId String?
+  type       String
+  dueDate    DateTime
+  sentAt     DateTime?
+  status     ReminderStatus  @default(PENDING)
+  user       User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  document   Document?       @relation(fields: [documentId], references: [id], onDelete: SetNull)
+  createdAt  DateTime        @default(now())
+  updatedAt  DateTime        @updatedAt
+}
+
+model AiRequestLog {
+  id        String   @id @default(cuid())
+  userId    String?
+  action    String
+  inputJson Json?
+  output    String?
+  user      User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  createdAt DateTime @default(now())
+}
+
+model EmailLog {
+  id         String    @id @default(cuid())
+  userId     String?
+  documentId String?
+  to         String
+  subject    String
+  status     String
+  error      String?
+  user       User?     @relation(fields: [userId], references: [id], onDelete: SetNull)
+  document   Document? @relation(fields: [documentId], references: [id], onDelete: SetNull)
+  createdAt  DateTime  @default(now())
+}
