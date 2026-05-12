@@ -10,10 +10,10 @@
 5. El repositorio Git local está correctamente apuntando a `GodinesCrazy/ContratoFacil.git`.
 
 ## ¿Qué falta o está fallando (Estado actual)?
-1. **Despliegue Staging:**
-   Se ha completado la auditoría de Railway. El proyecto está listo para ser desplegado manualmente por Iván siguiendo la nueva guía `docs/RAILWAY_STAGING_SETUP.md`.
+1. **Validación de Despliegue:**
+   Se detectó y corrigió un error en el pipeline de Railway donde el backend no generaba el cliente Prisma antes de compilar. El script ha sido actualizado y validado localmente.
 
 ## Pasos Inmediatos a Seguir
-1. Realizar despliegue de Backend + PostgreSQL en Railway.
-2. Validar `/health` y `/ready` en la URL pública.
-3. Iniciar preparación de Vercel para el Frontend.
+1. Ejecutar push a `main` para disparar el redeploy en Railway.
+2. Validar que el backend levante correctamente en Staging.
+3. Configurar Vercel para el Frontend.
