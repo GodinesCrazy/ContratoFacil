@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "https://contratofacil-backend-production.up.railway.app/api/:path*"
+    },
+    {
+      "source": "/health",
+      "destination": "https://contratofacil-backend-production.up.railway.app/health"
+    },
+    {
+      "source": "/ready",
+      "destination": "https://contratofacil-backend-production.up.railway.app/ready"
+    }
+  ]
+}
