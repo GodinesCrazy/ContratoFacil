@@ -11,11 +11,13 @@
 6. Backend Railway validado y operativo en `https://contratofacil-backend-production.up.railway.app`.
 7. Verificación de `/health` y `/ready` (conexión DB) exitosa.
 8. PostgreSQL en Railway conectado y sincronizado.
+9. Configuración de `vercel.json` actualizada con la URL real de Railway.
+10. Variable de entorno frontend `VITE_API_BASE_URL` validada y documentada.
+11. Guía de despliegue `docs/VERCEL_FRONTEND_SETUP.md` y Checklist creados.
 
 ## ¿Qué falta o está fallando (Estado actual)?
-1. **Validación de Despliegue:**
-   Backend Railway Staging **OK**. El fix de `prisma generate` funcionó correctamente y el servicio está en línea.
+1. **Despliegue Frontend:** El frontend está preparado pero requiere despliegue manual en la consola de Vercel por parte de Iván.
 
 ## Pasos Inmediatos a Seguir
-1. Configurar Vercel para el Frontend.
-2. Apuntar el Frontend a la URL del Backend Railway.
+1. Realizar el despliegue manual en Vercel siguiendo la guía `docs/VERCEL_FRONTEND_SETUP.md`.
+2. Una vez obtenida la URL de Vercel, actualizar la variable `FRONTEND_URL` en el backend de Railway para habilitar CORS.

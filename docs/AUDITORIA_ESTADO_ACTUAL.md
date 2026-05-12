@@ -13,4 +13,5 @@
 | Backend Stack | VERIFICADO | Express, Prisma, PDFKit presentes en `backend/package.json`. | Bajo | - |
 | Pagos | PENDIENTE | Existe modelo `Payment` y variable `PAYMENT_PROVIDER="mock"`. | Medio | Definir proveedor e implementar. |
 | IA | PENDIENTE | Existe modelo `AiRequestLog` y variable `OPENAI_API_KEY`. | Medio | Definir prompts e integrar. |
-| CI/CD (Vercel/Railway) | DEFINIDO POR PRODUCTO | `vercel.json`, `railway.json` y `Dockerfile` creados. | Bajo | Validar despliegue tras arreglar build local. |
+| CI/CD (Vercel/Railway) | OK | `vercel.json` configurado con la URL real de Railway. Guía de setup frontend creada. | Bajo | Listo para despliegue manual en Vercel. |
+| Configuración Frontend | OK | Variable `VITE_API_BASE_URL` identificada. Build local exitoso. | Bajo | - |
