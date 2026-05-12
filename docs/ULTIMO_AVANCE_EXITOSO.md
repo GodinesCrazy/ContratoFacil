@@ -10,9 +10,10 @@
 5. El repositorio Git local está correctamente apuntando a `GodinesCrazy/ContratoFacil.git`.
 
 ## ¿Qué falta o está fallando (Estado actual)?
-1. **Estado de Build:**
-   ¡Éxito! El proyecto compila al 100%. Se han eliminado todos los caracteres BOM del monorepo y se ha corregido la configuración de tipos del frontend. Tanto el backend (`tsc`) como el frontend (`vite build`) generan sus artefactos correctamente.
+1. **Despliegue Staging:**
+   Se ha completado la auditoría de Railway. El proyecto está listo para ser desplegado manualmente por Iván siguiendo la nueva guía `docs/RAILWAY_STAGING_SETUP.md`.
 
 ## Pasos Inmediatos a Seguir
-1. Realizar commit de los cambios de configuración.
-2. Iniciar implementación de la landing y dashboard.
+1. Realizar despliegue de Backend + PostgreSQL en Railway.
+2. Validar `/health` y `/ready` en la URL pública.
+3. Iniciar preparación de Vercel para el Frontend.

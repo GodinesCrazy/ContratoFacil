@@ -5,6 +5,8 @@
 | Instalación NPM | OK | `npm install` exitoso (273 packages) | Bajo | - |
 | Prisma Generate | OK | Prisma Client generado correctamente. | Bajo | - |
 | Compilación (Build) | OK | Monorepo completo (Backend y Frontend) compila correctamente. | Bajo | - |
+| Infraestructura Local | ADVERTENCIA | Docker no está instalado en el sistema. | Medio | Instalar Docker Desktop o usar DB en la nube. |
+| Railway Staging | OK | Configuración de Railway auditada y documentada en `docs/RAILWAY_STAGING_SETUP.md`. | Bajo | Iván debe realizar el despliegue inicial en el Dashboard. |
 | Estructura Git | OK | Repo local sincronizado con `origin https://github.com/GodinesCrazy/ContratoFacil.git`. Rama `main`. | Bajo | Hacer commit de archivos untracked. |
 | Modelos de Datos | OK | `schema.prisma` contiene todos los modelos esperados. | Bajo | - |
 | Frontend Stack | VERIFICADO | Vite + React presentes en `frontend/package.json`. | Bajo | - |
