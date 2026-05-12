@@ -1,4 +1,4 @@
-﻿# DEPLOYMENT GUIDE â€” ContratoFÃ¡cil
+# DEPLOYMENT GUIDE â€” ContratoFÃ¡cil
 
 ## GitHub
 
@@ -58,7 +58,7 @@ ConfiguraciÃ³n si se usa el `vercel.json` raÃ­z:
 Editar `vercel.json` y reemplazar:
 
 ```txt
-https://TU-BACKEND-RAILWAY.up.railway.app
+https://contratofacil-backend-production.up.railway.app
 ```
 
 por la URL real del backend Railway.
@@ -68,8 +68,8 @@ por la URL real del backend Railway.
 Backend:
 
 ```txt
-https://TU-BACKEND-RAILWAY.up.railway.app/health
-https://TU-BACKEND-RAILWAY.up.railway.app/ready
+https://contratofacil-backend-production.up.railway.app/health
+https://contratofacil-backend-production.up.railway.app/ready
 ```
 
 Frontend:

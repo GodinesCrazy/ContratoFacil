@@ -6,7 +6,7 @@
 | Prisma Generate | OK | Prisma Client generado correctamente. | Bajo | - |
 | Compilación (Build) | OK | Monorepo completo (Backend y Frontend) compila correctamente. | Bajo | - |
 | Infraestructura Local | ADVERTENCIA | Docker no está instalado en el sistema. | Medio | Instalar Docker Desktop o usar DB en la nube. |
-| Railway Staging | ADVERTENCIA | Backend falló en Railway por falta de `prisma generate` antes de `tsc`. Corregido en `backend/package.json`. | Bajo | Realizar redeploy en Railway para validar. |
+| Railway Staging | OK | Backend Online en `https://contratofacil-backend-production.up.railway.app`. /health y /ready OK. | Bajo | Próximo paso: Configurar Frontend en Vercel. |
 | Estructura Git | OK | Repo local sincronizado con `origin https://github.com/GodinesCrazy/ContratoFacil.git`. Rama `main`. | Bajo | Hacer commit de archivos untracked. |
 | Modelos de Datos | OK | `schema.prisma` contiene todos los modelos esperados. | Bajo | - |
 | Frontend Stack | VERIFICADO | Vite + React presentes en `frontend/package.json`. | Bajo | - |
